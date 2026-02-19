@@ -36,6 +36,12 @@ export default function Navbar() {
     { name: "About", href: "/about", icon: "auto_fix_high" },
   ];
 
+  const socialLinks = [
+    { platform: "instagram", url: "https://instagram.com/sephora" },
+    { platform: "tiktok", url: "https://tiktok.com/@fentybeauty" },
+    { platform: "youtube", url: "https://youtube.com/@vogue" },
+  ];
+
   return (
     <>
       {/* 1. NAVBAR UTAMA */}
@@ -184,17 +190,20 @@ export default function Navbar() {
 
             <div className="mt-auto pt-8 border-t border-slate-100">
               <div className="flex gap-4 mb-6">
-                {["instagram", "tiktok", "youtube"].map((icon) => (
-                  <div
-                    key={icon}
-                    className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center"
+               {socialLinks.map((social) => (
+                  <a
+                    key={social.platform}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center hover:bg-pink-50 transition-colors group"
                   >
                     <img
-                      src={`https://cdn.simpleicons.org/${icon}/slate`}
-                      className="w-4 h-4 opacity-60"
-                      alt={icon}
+                      src={`https://cdn.simpleicons.org/${social.platform}/slate`}
+                      className="w-4 h-4 opacity-60 group-hover:opacity-100 group-hover:invert-[.5] group-hover:sepia-[1] group-hover:saturate-[5] group-hover:hue-rotate-[300deg]"
+                      alt={social.platform}
                     />
-                  </div>
+                  </a>
                 ))}
               </div>
               <p className="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">
