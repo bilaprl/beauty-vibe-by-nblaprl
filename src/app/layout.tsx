@@ -10,6 +10,12 @@ const montserrat = Montserrat({
   weight: ["300", "400", "500", "600", "700", "900"],
 });
 
+const socialLinks = [
+  { platform: "instagram", url: "https://instagram.com/sephora" },
+  { platform: "tiktok", url: "https://tiktok.com/@fentybeauty" },
+  { platform: "youtube", url: "https://youtube.com/@vogue" },
+];
+
 export default function RootLayout({
   children,
 }: {
@@ -77,17 +83,19 @@ export default function RootLayout({
                     <h4 className="font-bold uppercase tracking-widest text-xs mb-6 text-pink-500">
                       Social
                     </h4>
-                    <div className="flex space-x-4">
-                      {["instagram", "facebook", "youtube"].map((icon) => (
+                  <div className="flex space-x-4">
+                      {socialLinks.map((social) => (
                         <a
-                          key={icon}
-                          href="#"
-                          className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-pink-600 transition-all"
+                          key={social.platform}
+                          href={social.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-pink-600 transition-all hover:-translate-y-1 group"
                         >
                           <img
-                            src={`https://cdn.simpleicons.org/${icon}/white`}
-                            className="w-4 h-4"
-                            alt={icon}
+                            src={`https://cdn.simpleicons.org/${social.platform}/white`}
+                            className="w-4 h-4 transition-transform group-hover:scale-110"
+                            alt={social.platform}
                           />
                         </a>
                       ))}
